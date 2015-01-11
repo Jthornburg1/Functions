@@ -17,8 +17,40 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    myName = "Jake";
+    NSString *myName = @"Jake";
+    
+    [self printIntroductions:myName];
+    [self countDownUntilIntroduction:4];
+    
+//    NSString *introduction;
+//    NSString *japaneseIntroduction;
+//    introduction = [NSString stringWithFormat:@"My name is %@", myName];
+//    japaneseIntroduction = [introduction stringByAppendingString:@" to moushimasu"];
+//    NSLog(@"%@",introduction);
+//    NSLog(@"%@",japaneseIntroduction);
+    
     return YES;
+}
+
+-(void)countDownUntilIntroduction:(int)numberOfDays {
+    if(numberOfDays == 0){
+        NSLog(@"The time has come");
+    }
+    else{
+        NSLog(@"%d days left until introductions.", numberOfDays);
+        int oneLessDay = numberOfDays - 1;
+        [self countDownUntilIntroduction:oneLessDay];
+    }
+}
+
+-(void)printIntroductions:(NSString*)name {
+    NSString *introduction;
+    NSString *japaneseIntroduction;
+    introduction = [NSString stringWithFormat:@"My name is %@", name];
+    japaneseIntroduction = [introduction stringByAppendingString:@" to moushimasu"];
+    
+    NSLog(@"%@",introduction);
+    NSLog(@"%@",japaneseIntroduction);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
